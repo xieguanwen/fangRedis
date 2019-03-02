@@ -26,4 +26,5 @@ REDIS_PORT = 6379
 
 注意原来的：
 ITEM_PIPELINES注释
-这个浏览器要和你本计算机对应(chromedriver)
+
+**这个浏览器要和你本计算机对应(chromedriver)**

@@ -65,9 +65,10 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://doc.scrapy.org/en/latest/topics/item-pipeline.html
-ITEM_PIPELINES = {
-   'fangRedis.pipelines.FangredisPipeline': 300,
-}
+
+# ITEM_PIPELINES = {
+#    'fangRedis.pipelines.FangredisPipeline': 300,
+# }
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://doc.scrapy.org/en/latest/topics/autothrottle.html
@@ -89,3 +90,17 @@ ITEM_PIPELINES = {
 #HTTPCACHE_DIR = 'httpcache'
 #HTTPCACHE_IGNORE_HTTP_CODES = []
 #HTTPCACHE_STORAGE = 'scrapy.extensions.httpcache.FilesystemCacheStorage'
+
+#使用scrapy_redis的调度器
+SCHEDULER = 'scrapy_redis.scheduler.Scheduler'
+# 在Redis中保持scrapy-redis用到的各个队列，从而允许暂停和恢复
+SCHEDULER_PERSIST = True
+# 使用scrapy_redis的去重
+DUPEFILTER_CLASS = 'scrapy_redis.dupefilter.RFPDupeFilter'
+# 使用scrapy_redis的存储
+ITEM_PIPELINES = {
+    'scrapy_redis.pipelines.RedisPipeline':300,
+}
+# 定义Redis的 ip和端口
+REDIS_HOST = '127.0.0.1' #ip地址
+REDIS_PORT = 6379

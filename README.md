@@ -8,7 +8,7 @@ class FangSpider(scrapy.Spider): 修改成 class FangSpider(RedisSpider):
 去掉 start_urls = ['https://www.fang.com/SoufunFamily.htm']
 添加 redis_key = "fang:start_urls"
 
-## **第三步**
+## **3.第三步**
 在settings.py文件中加入
 #### 使用scrapy_redis的调度器
 SCHEDULER = 'scrapy_redis.scheduler.Scheduler'
